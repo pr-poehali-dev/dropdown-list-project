@@ -72,11 +72,6 @@ const WarehouseItemDropdown = () => {
                       <span className="font-semibold text-base">
                         {item.name}
                       </span>
-                      <Badge
-                        className={`${getStatusColor(item.status)} text-xs`}
-                      >
-                        {getStatusText(item.status)}
-                      </Badge>
                     </div>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-gray-600">
                       <div>
@@ -92,10 +87,16 @@ const WarehouseItemDropdown = () => {
                         {item.manufacturer}
                       </div>
                       <div>
-                        <span className="font-medium">Упаковок:</span>{" "}
-                        {item.packageCount} ({item.itemsPerPackage} шт.)
+                        <span className="font-medium">
+                          Количество в упаковке:
+                        </span>{" "}
+                        {item.itemsPerPackage} шт.
                       </div>
-                      <div className="col-span-2">
+                      <div>
+                        <span className="font-medium">Упаковок:</span>{" "}
+                        {item.packageCount} шт.
+                      </div>
+                      <div>
                         <span className="font-medium">Срок годности:</span>{" "}
                         {new Date(item.expiryDate).toLocaleDateString("ru-RU")}
                       </div>
