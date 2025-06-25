@@ -64,14 +64,42 @@ const WarehouseItemDropdown = () => {
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Выберите товар из списка" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-80">
               {mockWarehouseItems.map((item) => (
-                <SelectItem key={item.id} value={item.id}>
-                  <div className="flex items-center justify-between w-full">
-                    <span>{item.name}</span>
-                    <Badge className={`ml-2 ${getStatusColor(item.status)}`}>
-                      {getStatusText(item.status)}
-                    </Badge>
+                <SelectItem key={item.id} value={item.id} className="p-4">
+                  <div className="w-full space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-base">
+                        {item.name}
+                      </span>
+                      <Badge
+                        className={`${getStatusColor(item.status)} text-xs`}
+                      >
+                        {getStatusText(item.status)}
+                      </Badge>
+                    </div>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-gray-600">
+                      <div>
+                        <span className="font-medium">Серия:</span>{" "}
+                        {item.series}
+                      </div>
+                      <div>
+                        <span className="font-medium">Количество:</span>{" "}
+                        {item.quantity} шт.
+                      </div>
+                      <div>
+                        <span className="font-medium">Производитель:</span>{" "}
+                        {item.manufacturer}
+                      </div>
+                      <div>
+                        <span className="font-medium">Упаковок:</span>{" "}
+                        {item.packageCount} ({item.itemsPerPackage} шт.)
+                      </div>
+                      <div className="col-span-2">
+                        <span className="font-medium">Срок годности:</span>{" "}
+                        {new Date(item.expiryDate).toLocaleDateString("ru-RU")}
+                      </div>
+                    </div>
                   </div>
                 </SelectItem>
               ))}
