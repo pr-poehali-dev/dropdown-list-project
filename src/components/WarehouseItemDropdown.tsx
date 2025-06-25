@@ -66,14 +66,12 @@ const WarehouseItemDropdown = () => {
             </SelectTrigger>
             <SelectContent className="max-h-80">
               {mockWarehouseItems.map((item) => (
-                <SelectItem key={item.id} value={item.id} className="p-4">
-                  <div className="w-full space-y-2">
+                <SelectItem key={item.id} value={item.id} className="p-2">
+                  <div className="w-full space-y-1">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-base">
-                        {item.name}
-                      </span>
+                      <span className="font-semibold text-sm">{item.name}</span>
                     </div>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-gray-600">
+                    <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-xs text-gray-600 leading-tight">
                       <div>
                         <span className="font-medium">Серия:</span>{" "}
                         {item.series}
@@ -87,9 +85,7 @@ const WarehouseItemDropdown = () => {
                         {item.manufacturer}
                       </div>
                       <div>
-                        <span className="font-medium">
-                          Количество в упаковке:
-                        </span>{" "}
+                        <span className="font-medium">В упаковке:</span>{" "}
                         {item.itemsPerPackage} шт.
                       </div>
                       <div>
@@ -97,7 +93,7 @@ const WarehouseItemDropdown = () => {
                         {item.packageCount} шт.
                       </div>
                       <div>
-                        <span className="font-medium">Срок годности:</span>{" "}
+                        <span className="font-medium">Срок:</span>{" "}
                         {new Date(item.expiryDate).toLocaleDateString("ru-RU")}
                       </div>
                     </div>
